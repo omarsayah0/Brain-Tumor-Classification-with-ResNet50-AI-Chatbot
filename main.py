@@ -2,7 +2,6 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 import json
-
 from tensorflow import keras
 from PIL import Image
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
@@ -30,7 +29,7 @@ def get_mistral_answer(result=None, state=False, user_input=""):
                     "The user uploaded an MRI scan. "
                     f"The model predicted: {result}. "
                     "Please explain what that means, and share your findings first."
-                    "use emojies in your respown."
+                    "use emojies in your response."
                 )
             }
             if st.session_state.mistral_response is not None:
