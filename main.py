@@ -71,7 +71,7 @@ def load_model():
     if not os.path.exists(model_filename):
         url = 'https://drive.google.com/uc?id=1lqn-dk20___Xq_JTH88DEP4VtZ9R4yka'
         gdown.download(url, model_filename, quiet=False)
-    model = keras.models.load_model(model_filename)
+    model = keras.models.load_model(model_filename, compile=False)
     return model
 
 @st.cache_data
