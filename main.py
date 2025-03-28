@@ -5,11 +5,9 @@ import json
 from tensorflow import keras
 from PIL import Image
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
-import gdown
 import os
 from brain_tumors import set_data
 from mistralai import Mistral
-
 import requests
 
 def download_from_google_drive(file_id, destination):
