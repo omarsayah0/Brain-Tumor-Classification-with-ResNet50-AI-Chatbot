@@ -5,12 +5,16 @@ import json
 from tensorflow import keras
 from PIL import Image
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
-
+import gdown
+import os
 from brain_tumors import set_data
 from mistralai import Mistral
 
-mistral_client = Mistral(api_key="your api code")
+api_key = st.secrets["api_keys"]["mistral"]
+
 mistral_model = "mistral-large-latest"
+
+mistral_client = Mistral(api_key=api_key)
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
@@ -63,7 +67,11 @@ def get_mistral_answer(result=None, state=False, user_input=""):
 
 @st.cache_resource
 def load_model():
-    model = keras.models.load_model('brain_tumor_resnet50_model.keras')
+    model_filename = 'brain_tumor_resnet50_model.keras'
+    if not os.path.exists(model_filename):
+        url = 'https://drive.google.com/uc?id=1lqn-dk20___Xq_JTH88DEP4VtZ9R4yka'
+        gdown.download(url, model_filename, quiet=False)
+    model = keras.models.load_model(model_filename)
     return model
 
 @st.cache_data
