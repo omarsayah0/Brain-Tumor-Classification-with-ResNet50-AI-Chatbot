@@ -69,7 +69,11 @@ def get_mistral_answer(result=None, state=False, user_input=""):
 def load_model():
     url = 'https://drive.google.com/uc?id=1lqn-dk20___Xq_JTH88DEP4VtZ9R4yka'
     gdown.download(url, "brain_tumor_resnet50_model.keras", quiet=False)
-    model = keras.models.load_model("brain_tumor_resnet50_model.keras", compile=False)
+    try:
+        model = keras.models.load_model("brain_tumor_resnet50_model.keras", compile=False)
+    except Exception as e:
+        st.error(f"Model loading failed: {e}")
+        raise
     return model
 
 @st.cache_data
