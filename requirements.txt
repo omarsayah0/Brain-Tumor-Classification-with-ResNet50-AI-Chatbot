@@ -1,0 +1,9 @@
+streamlit
+matplotlib
+numpy
+pillow
+tensorflow
+scikit-learn
+gdown
+mistralai
+os
