@@ -95,7 +95,7 @@ def get_mistral_answer(result=None, state=False, user_input=""):
 
 @st.cache_resource
 def load_model():
-    model_filename = 'brain_model.keras'
+    model_filename = 'brain_tumor_resnet50_model'
 
     if not os.path.exists(model_filename):
         file_id = '1lqn-dk20___Xq_JTH88DEP4VtZ9R4yka'
