@@ -7,3 +7,4 @@ scikit-learn
 gdown
 mistralai
 requests
+gdown
