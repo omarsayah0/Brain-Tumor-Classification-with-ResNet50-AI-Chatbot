@@ -1,9 +1,10 @@
-streamlit
-matplotlib
+typing-extensions==4.6.0
+streamlit==1.42.2
+matplotlib==3.7.1
 numpy==1.23.5
-pillow
+pillow==11.1.0
 tensorflow==2.12.0
-scikit-learn
-gdown
-mistralai==0.0.6
-requests
+scikit-learn==1.2.2
+gdown==4.7.1
+mistralai==1.5.0
+requests==2.31.0
