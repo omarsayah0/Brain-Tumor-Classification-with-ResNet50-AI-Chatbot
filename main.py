@@ -5,38 +5,10 @@ import json
 from tensorflow import keras
 from PIL import Image
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+import gdown
 import os
 from brain_tumors import set_data
 from mistralai import Mistral
-import requests
-
-def download_from_google_drive(file_id, destination):
-    URL = "https://docs.google.com/uc?export=download"
-
-    session = requests.Session()
-
-    response = session.get(URL, params={'id': file_id}, stream=True)
-    token = get_confirm_token(response)
-
-    if token:
-        params = {'id': file_id, 'confirm': token}
-        response = session.get(URL, params=params, stream=True)
-
-    save_response_content(response, destination)
-
-def get_confirm_token(response):
-    for key, value in response.cookies.items():
-        if key.startswith('download_warning'):
-            return value
-    return None
-
-def save_response_content(response, destination):
-    CHUNK_SIZE = 32768
-
-    with open(destination, "wb") as f:
-        for chunk in response.iter_content(CHUNK_SIZE):
-            if chunk:
-                f.write(chunk)
 
 api_key = st.secrets["api_keys"]["mistral"]
 
@@ -96,11 +68,9 @@ def get_mistral_answer(result=None, state=False, user_input=""):
 @st.cache_resource
 def load_model():
     model_filename = 'brain_model.h5'
-
     if not os.path.exists(model_filename):
-        file_id = '1t8L53PtPMg-plhcQhYu8L26oo-o42pN1'
-        download_from_google_drive(file_id, model_filename)
-
+        url = 'https://drive.google.com/uc?id=1t8L53PtPMg-plhcQhYu8L26oo-o42pN1'
+        gdown.download(url, model_filename, quiet=False)
     model = keras.models.load_model(model_filename, compile=False)
     return model
 
