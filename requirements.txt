@@ -1,10 +1,10 @@
-streamlit
+streamlit==1.42.2
+h5py==3.9.0
 matplotlib
 numpy
 pillow
-tensorflow
+tensorflow==2.13.0
 scikit-learn
 gdown
 mistralai
 requests
-gdown
