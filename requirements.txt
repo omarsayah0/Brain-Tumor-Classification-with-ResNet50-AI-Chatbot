@@ -5,5 +5,5 @@ pillow
 tensorflow==2.13.0
 scikit-learn
 gdown
-mistralai==1.4.0
+mistralai==0.0.7
 requests
