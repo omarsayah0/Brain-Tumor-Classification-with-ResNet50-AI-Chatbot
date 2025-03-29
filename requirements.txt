@@ -2,7 +2,7 @@ streamlit
 matplotlib
 numpy==1.24.3
 pillow
-tensorflow==2.13.0
+tensorflow==2.12.0
 scikit-learn
 gdown
 mistralai==0.0.7
