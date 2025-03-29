@@ -67,9 +67,9 @@ def get_mistral_answer(result=None, state=False, user_input=""):
 
 @st.cache_resource
 def load_model():
-    model_filename = 'brain_model.h5'
+    model_filename = 'brain_tumor_resnet50_model.keras'
     if not os.path.exists(model_filename):
-        url = 'https://www.dropbox.com/scl/fi/wi15tnyb5ict5irp50aal/brain_model.h5?rlkey=8ebrdu56kg4n3nkip3vi9smi8&st=hpjohvlf&dl=1'
+        url = 'https://www.dropbox.com/scl/fi/d42ee2snyn69xuw7lv2ch/brain_tumor_resnet50_model.keras?rlkey=vul1cr9qi4ierv387y6puf43j&st=7frpih65&dl=1'
         gdown.download(url, model_filename, quiet=False)
     model = keras.models.load_model(model_filename, compile=False)
     return model
