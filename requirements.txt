@@ -1,9 +1,8 @@
-streamlit==1.42.2
-h5py==3.9.0
+streamlit
 matplotlib
 numpy
 pillow
-tensorflow==2.13.0
+tensorflow
 scikit-learn
 gdown
 mistralai
