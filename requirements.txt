@@ -1,4 +1,4 @@
-typing-extensions==4.6.3
+typing-extensions==4.6.0
 streamlit==1.42.2
 matplotlib==3.7.1
 numpy==1.23.5
