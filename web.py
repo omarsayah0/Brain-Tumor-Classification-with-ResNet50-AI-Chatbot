@@ -1,5 +1,4 @@
 import streamlit as st
-
 import numpy as np
 from tensorflow import keras
 from PIL import Image
@@ -8,11 +7,8 @@ import os
 from brain_tumors import set_data
 from mistralai import Mistral
 #python -m streamlit run web.py
-api_key = st.secrets["api_keys"]["mistral"]
-
+mistral_client = Mistral(api_key="Lxbe1yGj29G2kXj2WH996CAgl9lBApia")
 mistral_model = "mistral-large-latest"
-
-mistral_client = Mistral(api_key=api_key)
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
