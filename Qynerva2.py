@@ -168,7 +168,7 @@ def main():
             st.error("🚫 The uploaded image does not appear to be an MRI scan for the Brain. Please upload a valid brain MRI image for the Brain.")
             return
         
-        st.write("On The Left The Uploaded MRI And On The Right The Detected Location")
+        st.write("Here’s your uploaded MRI on the left, and on the right you can see where the tumor was found.")
 
         col1, col2 = st.columns(2)
         
