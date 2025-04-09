@@ -6,4 +6,3 @@ gdown
 mistralai
 clip
 torch
-PIL
