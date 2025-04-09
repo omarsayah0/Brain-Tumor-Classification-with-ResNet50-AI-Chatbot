@@ -4,5 +4,5 @@ numpy==1.23.5
 Pillow
 gdown
 mistralai
-clip
+git+https://github.com/openai/CLIP.git
 torch
