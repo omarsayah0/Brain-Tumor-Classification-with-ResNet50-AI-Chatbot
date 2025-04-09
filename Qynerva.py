@@ -91,10 +91,22 @@ def main():
 
     model = load_model()
     train_generator, val_generator = set_data()
-    st.header("Hi there! 👋 I'm **Qynerva** 🤖, your friendly AI assistant for brain MRI scans. "
-            "I help you understand what's going on in your scan using smart AI, but remember "
+    st.header("Hi there! 👋 I'm **Qynerva** 🤖, your friendly AI assistant for brain MRI scans. I help you understand what's going on in your scan using smart AI, but remember"
             "**I'm not a real doctor**, so always check with a healthcare professional for medical decisions 🧠💬")
-    st.header("Upload an MRI Image for Classification")
+    
+    st.warning("""
+    **Warning ⚠️:**  
+    This AI model is still under development. If the uploaded MRI contains another brain disease or abnormality not listed below, the model may produce inaccurate or random predictions.  
+    Currently, the model is only trained to detect the following cases:
+    - **Normal brain MRI**
+    - **Pituitary tumor**
+    - **Meningioma tumor**
+    - **Glioma tumor**
+               
+    We are actively working on improving the model by including more disease types. Stay tuned for updates in the near future!
+    """)
+
+    st.header("Upload Your MRI Image")
     uploaded_file = st.file_uploader("Upload MRI", type=["jpg", "jpeg", "png"])
 
     if "interpretation_shown" not in st.session_state:
@@ -116,10 +128,17 @@ def main():
             pred_class = class_labels[pred_label_idx]
             confidence = float(np.max(preds)) * 100
         else :
-            st.error("🚫 The uploaded image does not appear to be an MRI scan. Please upload a valid brain MRI image.")
+            st.error("🚫 The uploaded image does not appear to be an MRI scan for the Brain. Please upload a valid brain MRI image for the Brain.")
             return
     
-        st.image(image, caption="Uploaded MRI", use_container_width =True)
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.image(image, caption="Uploaded MRI", use_container_width=True)
+
+        with col2:
+            st.image(image, caption="Another Image", use_container_width=True)
+
 
         interpretation = get_mistral_answer(result=pred_class, Confidence = confidence, state=True)
         st.write("**Qynerva🤖:**")
