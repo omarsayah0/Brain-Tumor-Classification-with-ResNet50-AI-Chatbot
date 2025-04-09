@@ -8,7 +8,7 @@ from brain_tumors import set_data
 from mistralai import Mistral
 from check_mri import is_mri_clip
 
-#python -m streamlit run web.py
+#python -m streamlit run Qynerva.py
 mistral_client = Mistral(api_key="Lxbe1yGj29G2kXj2WH996CAgl9lBApia")
 mistral_model = "mistral-large-latest"
 
@@ -116,8 +116,8 @@ def main():
             pred_class = class_labels[pred_label_idx]
             confidence = float(np.max(preds)) * 100
         else :
-            pred_class = "the user enter not an mri scan image , tell him to enter an valid image"
-            Confidence = "100%"
+            st.error("🚫 The uploaded image does not appear to be an MRI scan. Please upload a valid brain MRI image.")
+            return
     
         st.image(image, caption="Uploaded MRI", use_container_width =True)
 
