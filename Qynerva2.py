@@ -7,6 +7,7 @@ import os
 from brain_tumors import set_data
 from mistralai import Mistral
 from check_mri import is_mri_clip
+import requests
 
 #python -m streamlit run Qynerva.py
 mistral_client = Mistral(api_key="Lxbe1yGj29G2kXj2WH996CAgl9lBApia")
