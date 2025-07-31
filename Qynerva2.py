@@ -93,17 +93,15 @@ def get_mistral_answer(result=None, location = None, Confidence = None, state=Fa
 
     except Exception as e:
         return f"Error: {str(e)}"
-
+MODEL_URL = "https://www.dropbox.com/scl/fi/d42ee2snyn69xuw7lv2ch/brain_tumor_resnet50_model.keras?rlkey=vul1cr9qi4ierv387y6puf43j&st=7frpih65&dl=1"
+MODEL_FILENAME = "brain_tumor_resnet50_model.keras"
 @st.cache_resource
 def load_model():
-    model_filename = 'brain_tumor_resnet50_model.keras'
-    '''
-    if not os.path.exists(model_filename):
-        url = 'https://www.dropbox.com/scl/fi/d42ee2snyn69xuw7lv2ch/brain_tumor_resnet50_model.keras?rlkey=vul1cr9qi4ierv387y6puf43j&st=7frpih65&dl=1'
-        gdown.download(url, model_filename, quiet=False)
-        '''
-    model = keras.models.load_model(model_filename, compile=False)
-    return model
+    with requests.get(MODEL_URL, stream=True) as r:
+        r.raise_for_status()
+        with open(MODEL_FILENAME, "wb") as f:
+            for chunk in r.iter_content(chunk_size=8192):
+                f.write(chunk)
 
 def main():
     st.title("Qynerva🤖")
