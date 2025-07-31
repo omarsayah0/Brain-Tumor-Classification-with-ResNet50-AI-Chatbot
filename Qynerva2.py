@@ -103,6 +103,8 @@ def load_model():
         with open(MODEL_FILENAME, "wb") as f:
             for chunk in r.iter_content(chunk_size=8192):
                 f.write(chunk)
+    return keras.models.load_model(MODEL_FILENAME, compile=False)
+
 
 def main():
     st.title("Qynerva🤖")
