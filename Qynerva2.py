@@ -124,7 +124,7 @@ def main():
     model = load_model()
     if model is None:
         st.error("❌ Failed to load model.")
-    return
+        return
     train_generator, val_generator = set_data()
     st.header("Hi there! 👋 I'm **Qynerva** 🤖, your friendly AI assistant for brain MRI scans. I help you understand what's going on in your scan using smart AI, but remember"
             "**I'm not a real doctor**, so always check with a healthcare professional for medical decisions 🧠💬")
